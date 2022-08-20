@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--자바스크립트 코드 ,= 밖으로 빼낸다-->
+
+    <h1>댓글 목록</h1>
+    <ul>
+    <% for (comment of comments) { %>
+        <!--<li><%= comment.id %><%= comment.content %></li>-->
+        <li><%= comment.content %></li>
+        <!--수정할 수 있는 창을 만들어도 됨-->
+        <form action="/update/<%= comment.id %>" method="post">
+            <input type="text" name="content">
+            <input type="submit" value="수정하기">
+        </form>
+        <form action="/delete/<%= comment.id %>" method="post">
+            <input type="submit" value="삭제하기">
+        </form>        
+    <% } %>
+    </ul>    
+    <hr>
+    <form action="/create" method="post">
+        <input type="text" name="content"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html> 
